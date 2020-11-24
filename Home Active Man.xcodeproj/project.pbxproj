@@ -10,6 +10,8 @@
 		BC5BCC40256CFD8500078236 /* Home_Active_Man.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5BCC36256CFD8500078236 /* Home_Active_Man.framework */; };
 		BC5BCC45256CFD8500078236 /* Home_Active_ManTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BCC44256CFD8500078236 /* Home_Active_ManTests.swift */; };
 		BC5BCC47256CFD8500078236 /* Home_Active_Man.h in Headers */ = {isa = PBXBuildFile; fileRef = BC5BCC39256CFD8500078236 /* Home_Active_Man.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC5BCC53256D02DB00078236 /* ExerciseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BCC52256D02DB00078236 /* ExerciseItem.swift */; };
+		BC6C716B256D37EA00720AC9 /* ExerciseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6C716A256D37EA00720AC9 /* ExerciseLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		BC5BCC3F256CFD8500078236 /* Home Active ManTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Home Active ManTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5BCC44256CFD8500078236 /* Home_Active_ManTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Active_ManTests.swift; sourceTree = "<group>"; };
 		BC5BCC46256CFD8500078236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC5BCC52256D02DB00078236 /* ExerciseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItem.swift; sourceTree = "<group>"; };
+		BC6C716A256D37EA00720AC9 /* ExerciseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,7 @@
 		BC5BCC2C256CFD8500078236 = {
 			isa = PBXGroup;
 			children = (
+				BC5BCC39256CFD8500078236 /* Home_Active_Man.h */,
 				BC5BCC38256CFD8500078236 /* Home Active Man */,
 				BC5BCC43256CFD8500078236 /* Home Active ManTests */,
 				BC5BCC37256CFD8500078236 /* Products */,
@@ -71,7 +76,8 @@
 		BC5BCC38256CFD8500078236 /* Home Active Man */ = {
 			isa = PBXGroup;
 			children = (
-				BC5BCC39256CFD8500078236 /* Home_Active_Man.h */,
+				BC5BCC52256D02DB00078236 /* ExerciseItem.swift */,
+				BC6C716A256D37EA00720AC9 /* ExerciseLoader.swift */,
 				BC5BCC3A256CFD8500078236 /* Info.plist */,
 			);
 			path = "Home Active Man";
@@ -147,6 +153,7 @@
 				TargetAttributes = {
 					BC5BCC35256CFD8500078236 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 					};
 					BC5BCC3E256CFD8500078236 = {
 						CreatedOnToolsVersion = 12.2;
@@ -194,6 +201,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6C716B256D37EA00720AC9 /* ExerciseLoader.swift in Sources */,
+				BC5BCC53256D02DB00078236 /* ExerciseItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +349,7 @@
 		BC5BCC4B256CFD8500078236 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -357,6 +367,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JosefSantamaria.Home-Active-Man";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -364,6 +375,7 @@
 		BC5BCC4C256CFD8500078236 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -388,6 +400,7 @@
 		BC5BCC4E256CFD8500078236 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9DVLTW4HGK;
@@ -406,6 +419,7 @@
 		BC5BCC4F256CFD8500078236 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9DVLTW4HGK;
