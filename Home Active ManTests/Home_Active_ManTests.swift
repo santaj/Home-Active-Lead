@@ -6,12 +6,22 @@
 //
 
 import XCTest
-@testable import Home_Active_Man
+
+class RemoteWorkoutLoader {
+    
+}
+
+class HTTPClient {
+    var requestedURL: URL?
+}
 
 class Home_Active_ManTests: XCTestCase {
 
-    func first_test_no() {
+    func test_init_doesNotRequestDataFromURL() {
+        let client = HTTPClient()
+        let _ = RemoteWorkoutLoader()
         
+        XCTAssertNil(client.requestedURL)
     }
 
 }
