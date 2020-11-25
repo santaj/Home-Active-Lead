@@ -15,3 +15,4 @@ enum LoadExerciseResult {
 protocol ExerciseLoader {
     func load(completion: @escaping (LoadExerciseResult) -> Void)
 }
+
