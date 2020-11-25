@@ -10,7 +10,7 @@ import XCTest
 
 class Home_Active_ManTests: XCTestCase {
 
-    func first_test() {
+    func first_test_no() {
         
     }
 
