@@ -54,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC522AE9256E6AE800A5279A /* Exercise Feature */ = {
+			isa = PBXGroup;
+			children = (
+				BC5BCC52256D02DB00078236 /* ExerciseItem.swift */,
+				BC6C716A256D37EA00720AC9 /* ExerciseLoader.swift */,
+			);
+			path = "Exercise Feature";
+			sourceTree = "<group>";
+		};
 		BC5BCC2C256CFD8500078236 = {
 			isa = PBXGroup;
 			children = (
@@ -76,8 +85,7 @@
 		BC5BCC38256CFD8500078236 /* Home Active Man */ = {
 			isa = PBXGroup;
 			children = (
-				BC5BCC52256D02DB00078236 /* ExerciseItem.swift */,
-				BC6C716A256D37EA00720AC9 /* ExerciseLoader.swift */,
+				BC522AE9256E6AE800A5279A /* Exercise Feature */,
 				BC5BCC3A256CFD8500078236 /* Info.plist */,
 			);
 			path = "Home Active Man";
