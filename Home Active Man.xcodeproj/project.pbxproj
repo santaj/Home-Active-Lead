@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC5AE1A72570443200C55EEB /* RemoteWorkoutLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5AE1A62570443200C55EEB /* RemoteWorkoutLoader.swift */; };
 		BC5BCC40256CFD8500078236 /* Home_Active_Man.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5BCC36256CFD8500078236 /* Home_Active_Man.framework */; };
 		BC5BCC45256CFD8500078236 /* Home_Active_ManTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BCC44256CFD8500078236 /* Home_Active_ManTests.swift */; };
-		BC5BCC47256CFD8500078236 /* Home_Active_Man.h in Headers */ = {isa = PBXBuildFile; fileRef = BC5BCC39256CFD8500078236 /* Home_Active_Man.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC5BCC53256D02DB00078236 /* ExerciseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BCC52256D02DB00078236 /* ExerciseItem.swift */; };
 		BC6C716B256D37EA00720AC9 /* ExerciseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6C716A256D37EA00720AC9 /* ExerciseLoader.swift */; };
 /* End PBXBuildFile section */
@@ -25,8 +25,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC5AE1A62570443200C55EEB /* RemoteWorkoutLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteWorkoutLoader.swift; sourceTree = "<group>"; };
 		BC5BCC36256CFD8500078236 /* Home_Active_Man.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Home_Active_Man.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC5BCC39256CFD8500078236 /* Home_Active_Man.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Home_Active_Man.h; sourceTree = "<group>"; };
 		BC5BCC3A256CFD8500078236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC5BCC3F256CFD8500078236 /* Home Active ManTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Home Active ManTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5BCC44256CFD8500078236 /* Home_Active_ManTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Active_ManTests.swift; sourceTree = "<group>"; };
@@ -63,10 +63,17 @@
 			path = "Exercise Feature";
 			sourceTree = "<group>";
 		};
+		BC5AE1A52570441100C55EEB /* Workout API */ = {
+			isa = PBXGroup;
+			children = (
+				BC5AE1A62570443200C55EEB /* RemoteWorkoutLoader.swift */,
+			);
+			path = "Workout API";
+			sourceTree = "<group>";
+		};
 		BC5BCC2C256CFD8500078236 = {
 			isa = PBXGroup;
 			children = (
-				BC5BCC39256CFD8500078236 /* Home_Active_Man.h */,
 				BC5BCC38256CFD8500078236 /* Home Active Man */,
 				BC5BCC43256CFD8500078236 /* Home Active ManTests */,
 				BC5BCC37256CFD8500078236 /* Products */,
@@ -86,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				BC522AE9256E6AE800A5279A /* Exercise Feature */,
+				BC5AE1A52570441100C55EEB /* Workout API */,
 				BC5BCC3A256CFD8500078236 /* Info.plist */,
 			);
 			path = "Home Active Man";
@@ -107,7 +115,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC5BCC47256CFD8500078236 /* Home_Active_Man.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +218,7 @@
 			files = (
 				BC6C716B256D37EA00720AC9 /* ExerciseLoader.swift in Sources */,
 				BC5BCC53256D02DB00078236 /* ExerciseItem.swift in Sources */,
+				BC5AE1A72570443200C55EEB /* RemoteWorkoutLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
