@@ -14,7 +14,7 @@ class Home_Active_ManTests: XCTestCase {
     func test_init_doesNotRequestDataFromURL() {
         let (_, client) = makeSUT()
         
-        XCTAssertNil(client.requestedURL)
+        XCTAssertTrue(client.requestedURLCount.isEmpty)
     }
     
     func test_init_requestDataFromURL() {
@@ -23,7 +23,7 @@ class Home_Active_ManTests: XCTestCase {
         
         sut.load()
         
-        XCTAssertEqual(client.requestedURL, url)
+        XCTAssertEqual(client.requestedURLCount, [url])
     }
     
     func test_init_requestDataTwiceFromURL() {
@@ -47,11 +47,9 @@ class Home_Active_ManTests: XCTestCase {
     
     
     private class HTTPClientSpy: HTTPClient {
-        var requestedURL: URL?
         var requestedURLCount = [URL]()
             
         func get(from url: URL) {
-            requestedURL = url
             requestedURLCount.append(url)
         }
     }
