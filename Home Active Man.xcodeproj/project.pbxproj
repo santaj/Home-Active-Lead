@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC5AE1A72570443200C55EEB /* RemoteWorkoutLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5AE1A62570443200C55EEB /* RemoteWorkoutLoader.swift */; };
+		BC5AE1A72570443200C55EEB /* RemoteExerciseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5AE1A62570443200C55EEB /* RemoteExerciseLoader.swift */; };
 		BC5BCC40256CFD8500078236 /* Home_Active_Man.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5BCC36256CFD8500078236 /* Home_Active_Man.framework */; };
 		BC5BCC45256CFD8500078236 /* Home_Active_ManTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BCC44256CFD8500078236 /* Home_Active_ManTests.swift */; };
 		BC5BCC53256D02DB00078236 /* ExerciseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BCC52256D02DB00078236 /* ExerciseItem.swift */; };
@@ -25,7 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC5AE1A62570443200C55EEB /* RemoteWorkoutLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteWorkoutLoader.swift; sourceTree = "<group>"; };
+		BC5AE1A62570443200C55EEB /* RemoteExerciseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteExerciseLoader.swift; sourceTree = "<group>"; };
 		BC5BCC36256CFD8500078236 /* Home_Active_Man.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Home_Active_Man.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5BCC3A256CFD8500078236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC5BCC3F256CFD8500078236 /* Home Active ManTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Home Active ManTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +66,7 @@
 		BC5AE1A52570441100C55EEB /* Workout API */ = {
 			isa = PBXGroup;
 			children = (
-				BC5AE1A62570443200C55EEB /* RemoteWorkoutLoader.swift */,
+				BC5AE1A62570443200C55EEB /* RemoteExerciseLoader.swift */,
 			);
 			path = "Workout API";
 			sourceTree = "<group>";
@@ -218,7 +218,7 @@
 			files = (
 				BC6C716B256D37EA00720AC9 /* ExerciseLoader.swift in Sources */,
 				BC5BCC53256D02DB00078236 /* ExerciseItem.swift in Sources */,
-				BC5AE1A72570443200C55EEB /* RemoteWorkoutLoader.swift in Sources */,
+				BC5AE1A72570443200C55EEB /* RemoteExerciseLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

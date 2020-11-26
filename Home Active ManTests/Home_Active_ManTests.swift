@@ -35,12 +35,22 @@ class Home_Active_ManTests: XCTestCase {
         
         XCTAssertEqual(client.requestedURLCount, [url, url])
     }
+    
+    func test_load_deliversErrorOnClientError() {
+        let (sut, client) = makeSUT()
+        client.error = NSError(domain: "Test", code: 0)
+        
+        var capturedError: RemoteExerciseLoader.Error?
+        sut.load() { error in capturedError = error }
+        
+        XCTAssertEqual(capturedError, .connectivity)
+    }
 
     //MARK: - Helpers
     
-    private func makeSUT(url: URL = URL(string: "https://a-given-url.com")!) -> (sut: RemoteWorkoutLoader, client: HTTPClientSpy) {
+    private func makeSUT(url: URL = URL(string: "https://a-given-url.com")!) -> (sut: RemoteExerciseLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
-        let sut = RemoteWorkoutLoader(url: url, client: client)
+        let sut = RemoteExerciseLoader(url: url, client: client)
         
         return (sut, client)
     }
@@ -48,8 +58,12 @@ class Home_Active_ManTests: XCTestCase {
     
     private class HTTPClientSpy: HTTPClient {
         var requestedURLCount = [URL]()
+        var error: Error?
             
-        func get(from url: URL) {
+        func get(from url: URL, completion: (Error) -> Void) {
+            if let error = error {
+                completion(error)
+            }
             requestedURLCount.append(url)
         }
     }
