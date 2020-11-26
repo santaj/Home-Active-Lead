@@ -25,6 +25,16 @@ class Home_Active_ManTests: XCTestCase {
         
         XCTAssertEqual(client.requestedURL, url)
     }
+    
+    func test_init_requestDataTwiceFromURL() {
+        let url = URL(string: "https://a-given-url.com")!
+        let (sut, client) = makeSUT(url: url)
+        
+        sut.load()
+        sut.load()
+        
+        XCTAssertEqual(client.requestedURLCount, [url, url])
+    }
 
     //MARK: - Helpers
     
@@ -38,9 +48,11 @@ class Home_Active_ManTests: XCTestCase {
     
     private class HTTPClientSpy: HTTPClient {
         var requestedURL: URL?
+        var requestedURLCount = [URL]()
             
         func get(from url: URL) {
             requestedURL = url
+            requestedURLCount.append(url)
         }
     }
 
