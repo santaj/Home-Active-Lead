@@ -14,26 +14,26 @@ class Home_Active_ManTests: XCTestCase {
     func test_init_doesNotRequestDataFromURL() {
         let (_, client) = makeSUT()
         
-        XCTAssertTrue(client.requestedURLCount.isEmpty)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_init_requestDataFromURL() {
         let url = URL(string: "https://a-given-url.com")!
         let (sut, client) = makeSUT(url: url)
         
-        sut.load() {_ in}
+        sut.load {_ in}
         
-        XCTAssertEqual(client.requestedURLCount, [url])
+        XCTAssertEqual(client.requestedURLs, [url])
     }
     
     func test_init_requestDataTwiceFromURL() {
         let url = URL(string: "https://a-given-url.com")!
         let (sut, client) = makeSUT(url: url)
         
-        sut.load() {_ in}
-        sut.load() {_ in}
+        sut.load {_ in}
+        sut.load {_ in}
         
-        XCTAssertEqual(client.requestedURLCount, [url, url])
+        XCTAssertEqual(client.requestedURLs, [url, url])
     }
     
     func test_load_deliversErrorOnClientError() {
@@ -46,6 +46,17 @@ class Home_Active_ManTests: XCTestCase {
         client.complete(with: error)
         
         XCTAssertEqual(capturedError, [.connectivity])
+    }
+    
+    func test_load_deliversErrorOnNon200HTTPResponse() {
+        let (sut, client) = makeSUT()
+        
+        var capturedError = [RemoteExerciseLoader.Error]()
+        sut.load() { capturedError.append($0) }
+        
+        client.complete(withStatusCode: 400)
+        
+        XCTAssertEqual(capturedError, [.invalidData])
     }
 
     //MARK: - Helpers
@@ -60,16 +71,27 @@ class Home_Active_ManTests: XCTestCase {
     
     private class HTTPClientSpy: HTTPClient {
         
-        var requestedURLCount = [URL]()
-        private var messages = [(url: URL, completion: (Error) -> Void)]()
+        private var messages = [(url: URL, completion: (Error?, HTTPURLResponse?) -> Void)]()
+        
+        var requestedURLs: [URL] {
+            return messages.map { $0.url }
+        }
             
-        func get(from url: URL, completion: @escaping (Error) -> Void) {
+        func get(from url: URL, completion: @escaping (Error?, HTTPURLResponse?) -> Void) {
             messages.append((url, completion))
-            requestedURLCount.append(url)
         }
         
         func complete(with error: Error, at index: Int = 0) {
-            messages[index].completion(error)
+            messages[index].completion(error, nil)
+        }
+        
+        func complete(withStatusCode: Int, at index: Int = 0) {
+            let response = HTTPURLResponse(
+                url: requestedURLs[index],
+                statusCode: 400,
+                httpVersion: nil,
+                headerFields: nil)
+            messages[index].completion(nil, response)
         }
     }
 
