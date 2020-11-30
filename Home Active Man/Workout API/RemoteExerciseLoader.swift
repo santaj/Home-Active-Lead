@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol HTTPClient {
-    func get(from url: URL, completion: (Error) -> Void)
+    func get(from url: URL, completion: @escaping (Error) -> Void)
 }
 
 public final class RemoteExerciseLoader {
@@ -24,7 +24,7 @@ public final class RemoteExerciseLoader {
         self.url = url
     }
     
-    public func load(completion: @escaping (Error) -> Void = {_ in}) {
+    public func load(completion: @escaping (Error) -> Void) {
         client.get(from: url) { error in
             completion(.connectivity)
         }
