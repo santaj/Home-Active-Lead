@@ -39,7 +39,7 @@ class Home_Active_ManTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWith: .connectivity) {
+        expect(sut, toCompleteWith: .failure(.connectivity)) {
             let error = NSError(domain: "Test", code: 0)
             client.complete(with: error)
         }
@@ -51,7 +51,7 @@ class Home_Active_ManTests: XCTestCase {
         let samples = [199, 201, 300, 400, 500]
         samples.enumerated().forEach { index, code in
             
-            expect(sut, toCompleteWith: .invalidData) {
+            expect(sut, toCompleteWith: .failure(.invalidData)) {
                 client.complete(withStatusCode: code, at: index)
             }
         }
@@ -60,10 +60,23 @@ class Home_Active_ManTests: XCTestCase {
     func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWith: .invalidData) {
+        expect(sut, toCompleteWith: .failure(.invalidData)) {
             let invalidJSON = Data("invalidJSON".utf8)
             client.complete(withStatusCode: 200, data: invalidJSON)
         }
+    }
+    
+    func test_load_deliversNoItemOn200HTTPResponsWithEmpyJSONList() {
+        let (sut, client) = makeSUT()
+        
+        var capturedResult = [RemoteExerciseLoader.Result]()
+        sut.load() { capturedResult.append($0) }
+        
+        let emptyListJSON = Data("{\"items\": []}".utf8)
+        client.complete(withStatusCode: 200, data: emptyListJSON)
+        
+        XCTAssertEqual(capturedResult, [.success([])])
+        
     }
 
     //MARK: - Helpers
@@ -75,13 +88,13 @@ class Home_Active_ManTests: XCTestCase {
         return (sut, client)
     }
     
-    private func expect(_ sut: RemoteExerciseLoader, toCompleteWith error: RemoteExerciseLoader.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    private func expect(_ sut: RemoteExerciseLoader, toCompleteWith result: RemoteExerciseLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         var capturedResult = [RemoteExerciseLoader.Result]()
         sut.load() { capturedResult.append($0) }
         
         action()
         
-        XCTAssertEqual(capturedResult, [.failure(error)], file: file, line: line)
+        XCTAssertEqual(capturedResult, [result], file: file, line: line)
     }
     
     
