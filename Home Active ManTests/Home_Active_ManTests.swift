@@ -75,14 +75,13 @@ class Home_Active_ManTests: XCTestCase {
         return (sut, client)
     }
     
-    private func expect(_ sut: RemoteExerciseLoader, toCompleteWith error: RemoteExerciseLoader.Error, when action: () -> Void) {
-        
-        var capturedError = [RemoteExerciseLoader.Error]()
-        sut.load() { capturedError.append($0) }
+    private func expect(_ sut: RemoteExerciseLoader, toCompleteWith error: RemoteExerciseLoader.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        var capturedResult = [RemoteExerciseLoader.Result]()
+        sut.load() { capturedResult.append($0) }
         
         action()
         
-        XCTAssertEqual(capturedError, [error])
+        XCTAssertEqual(capturedResult, [.failure(error)], file: file, line: line)
     }
     
     
@@ -105,7 +104,7 @@ class Home_Active_ManTests: XCTestCase {
         func complete(withStatusCode: Int, data: Data = Data(), at index: Int = 0) {
             let response = HTTPURLResponse(
                 url: requestedURLs[index],
-                statusCode: 400,
+                statusCode: withStatusCode,
                 httpVersion: nil,
                 headerFields: nil)!
             messages[index].completion(.success(data, response))
