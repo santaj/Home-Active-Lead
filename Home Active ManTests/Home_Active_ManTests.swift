@@ -69,14 +69,48 @@ class Home_Active_ManTests: XCTestCase {
     func test_load_deliversNoItemOn200HTTPResponsWithEmpyJSONList() {
         let (sut, client) = makeSUT()
         
-        var capturedResult = [RemoteExerciseLoader.Result]()
-        sut.load() { capturedResult.append($0) }
+        expect(sut, toCompleteWith: .success([])) {
+            let emptyListJSON = Data("{\"items\": []}".utf8)
+            client.complete(withStatusCode: 200, data: emptyListJSON)
+        }
+    }
+    
+    func test_load_deliversItemWith200HTTPResponseWithJSONItems() {
+        let (sut, client) = makeSUT()
         
-        let emptyListJSON = Data("{\"items\": []}".utf8)
-        client.complete(withStatusCode: 200, data: emptyListJSON)
+        let item1 = ExerciseItem(
+            id: UUID(),
+            frontImage: URL(string: "http://a-url.com")!,
+            title: "Ben",
+            category: "Legs")
         
-        XCTAssertEqual(capturedResult, [.success([])])
+        let item1JSON: [String : Any] = [
+            "id": item1.id.uuidString,
+            "frontImage": item1.frontImage.absoluteString,
+            "title": item1.title,
+            "category": item1.category
+        ]
+        let item2 = ExerciseItem(
+            id: UUID(),
+            frontImage: URL(string: "http://aNother-url.com")!,
+            title: "Bröst",
+            category: "Överkropp")
         
+        let item2JSON: [String : Any] = [
+            "id": item2.id.uuidString,
+            "frontImage": item2.frontImage.absoluteString,
+            "title": item2.title,
+            "category": item2.category
+        ]
+        
+        let itemJSON = [
+            "items": [item1JSON, item2JSON]
+        ]
+        
+        expect(sut, toCompleteWith: .success([item1, item2])) {
+            let json = try! JSONSerialization.data(withJSONObject: itemJSON)
+            client.complete(withStatusCode: 200, data: json)
+        }
     }
 
     //MARK: - Helpers

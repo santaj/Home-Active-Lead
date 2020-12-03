@@ -9,14 +9,24 @@ import Foundation
 
 
 public struct ExerciseItem: Equatable {
-    let id: Int
-    let frontImage: URL
-    let title: String
-    let category: String
+    public let id: UUID
+    public let frontImage: URL
+    public let title: String
+    public let category: String
+    
+    public init(id: UUID, frontImage: URL, title: String, category: String) {
+        self.id = id
+        self.frontImage = frontImage
+        self.title = title
+        self.category = category
+    }
 }
 
-struct ExerciseDetailInfo {
-    let id: Int
-    let secondImage: URL
-    let instructionText: String
+extension ExerciseItem: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case frontImage
+        case title
+        case category
+    }
 }
