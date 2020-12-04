@@ -50,9 +50,9 @@ class Home_Active_ManTests: XCTestCase {
         
         let samples = [199, 201, 300, 400, 500]
         samples.enumerated().forEach { index, code in
-            
             expect(sut, toCompleteWith: .failure(.invalidData)) {
-                client.complete(withStatusCode: code, at: index)
+                let json = makeItemsJSON([])
+                client.complete(withStatusCode: code, data: json, at: index)
             }
         }
     }
@@ -78,37 +78,22 @@ class Home_Active_ManTests: XCTestCase {
     func test_load_deliversItemWith200HTTPResponseWithJSONItems() {
         let (sut, client) = makeSUT()
         
-        let item1 = ExerciseItem(
+        let item1 = makeItem(
             id: UUID(),
             frontImage: URL(string: "http://a-url.com")!,
             title: "Ben",
             category: "Legs")
         
-        let item1JSON: [String : Any] = [
-            "id": item1.id.uuidString,
-            "frontImage": item1.frontImage.absoluteString,
-            "title": item1.title,
-            "category": item1.category
-        ]
-        let item2 = ExerciseItem(
+        let item2 = makeItem(
             id: UUID(),
             frontImage: URL(string: "http://aNother-url.com")!,
             title: "Bröst",
             category: "Överkropp")
         
-        let item2JSON: [String : Any] = [
-            "id": item2.id.uuidString,
-            "frontImage": item2.frontImage.absoluteString,
-            "title": item2.title,
-            "category": item2.category
-        ]
+        let items = [item1.model, item2.model]
         
-        let itemJSON = [
-            "items": [item1JSON, item2JSON]
-        ]
-        
-        expect(sut, toCompleteWith: .success([item1, item2])) {
-            let json = try! JSONSerialization.data(withJSONObject: itemJSON)
+        expect(sut, toCompleteWith: .success(items)) {
+            let json = makeItemsJSON(([item1.json, item2.json]))
             client.complete(withStatusCode: 200, data: json)
         }
     }
@@ -122,6 +107,24 @@ class Home_Active_ManTests: XCTestCase {
         return (sut, client)
     }
     
+    private func makeItem(id: UUID, frontImage: URL, title: String, category: String) -> (model: ExerciseItem, json: [String: Any]) {
+        
+        let item = ExerciseItem(id: id, frontImage: frontImage, title: title, category: category)
+        
+        let json = [
+            "id": id.uuidString,
+            "frontImage": frontImage.absoluteString,
+            "title": title,
+            "category": category
+        ]
+        return (item, json)
+    }
+    
+    private func makeItemsJSON(_ item: [[String: Any]]) -> Data {
+        let json = ["items": item]
+        return try! JSONSerialization.data(withJSONObject: json)
+    }
+    
     private func expect(_ sut: RemoteExerciseLoader, toCompleteWith result: RemoteExerciseLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         var capturedResult = [RemoteExerciseLoader.Result]()
         sut.load() { capturedResult.append($0) }
@@ -130,7 +133,6 @@ class Home_Active_ManTests: XCTestCase {
         
         XCTAssertEqual(capturedResult, [result], file: file, line: line)
     }
-    
     
     private class HTTPClientSpy: HTTPClient {
         
@@ -148,7 +150,7 @@ class Home_Active_ManTests: XCTestCase {
             messages[index].completion(.failure(error))
         }
         
-        func complete(withStatusCode: Int, data: Data = Data(), at index: Int = 0) {
+        func complete(withStatusCode: Int, data: Data, at index: Int = 0) {
             let response = HTTPURLResponse(
                 url: requestedURLs[index],
                 statusCode: withStatusCode,
