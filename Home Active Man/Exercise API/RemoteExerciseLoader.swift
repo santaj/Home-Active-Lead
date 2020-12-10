@@ -39,11 +39,10 @@ public final class RemoteExerciseLoader {
         client.get(from: url) { result in
             switch result {
             case let .success(data, response):
-                if response.statusCode == 200, let root = try? JSONDecoder().decode(Root.self, from: data) {
-                    completion(.success(root.items.map {
-                        $0.item
-                    }))
-                }else{
+                do {
+                    let items = try ExerciseItemMapper.map(data, response)
+                    completion(.success(items))
+                } catch {
                     completion(.failure(.invalidData))
                 }
             case .failure:
@@ -53,17 +52,28 @@ public final class RemoteExerciseLoader {
     }
 }
 
-private struct Root: Decodable {
-    let items: [Item]
-}
-
-private struct Item: Decodable {
-    public let id: UUID
-    public let frontImage: URL
-    public let title: String
-    public let category: String
+private class ExerciseItemMapper {
     
-    var item: ExerciseItem {
-        return ExerciseItem(id: id, frontImage: frontImage, title: title, category: category)
+    private struct Root: Decodable {
+        let items: [Item]
+    }
+
+    private struct Item: Decodable {
+        public let id: UUID
+        public let frontImage: URL
+        public let title: String
+        public let category: String
+        
+        var item: ExerciseItem {
+            return ExerciseItem(id: id, frontImage: frontImage, title: title, category: category)
+        }
+    }
+    
+    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [ExerciseItem] {
+        guard response.statusCode == 200 else {
+            throw RemoteExerciseLoader.Error.invalidData
+        }
+        let root = try JSONDecoder().decode(Root.self, from: data)
+        return root.items.map { $0.item }
     }
 }
