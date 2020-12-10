@@ -69,8 +69,10 @@ private class ExerciseItemMapper {
         }
     }
     
+    static var OK200: Int { return 200 }
+    
     static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [ExerciseItem] {
-        guard response.statusCode == 200 else {
+        guard response.statusCode == OK200 else {
             throw RemoteExerciseLoader.Error.invalidData
         }
         let root = try JSONDecoder().decode(Root.self, from: data)
