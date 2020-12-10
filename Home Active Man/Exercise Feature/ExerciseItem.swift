@@ -21,12 +21,3 @@ public struct ExerciseItem: Equatable {
         self.category = category
     }
 }
-
-extension ExerciseItem: Decodable {
-    private enum CodingKeys: String, CodingKey {
-        case id
-        case frontImage
-        case title
-        case category
-    }
-}
