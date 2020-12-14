@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC57BE8925881A78008A1090 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57BE8825881A78008A1090 /* HTTPClient.swift */; };
+		BC57BE8D25881ADC008A1090 /* ExerciseItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57BE8C25881ADC008A1090 /* ExerciseItemMapper.swift */; };
 		BC5AE1A72570443200C55EEB /* RemoteExerciseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5AE1A62570443200C55EEB /* RemoteExerciseLoader.swift */; };
 		BC5BCC40256CFD8500078236 /* Home_Active_Man.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5BCC36256CFD8500078236 /* Home_Active_Man.framework */; };
 		BC5BCC45256CFD8500078236 /* Home_Active_ManTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BCC44256CFD8500078236 /* Home_Active_ManTests.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		BC57BE8825881A78008A1090 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		BC57BE8C25881ADC008A1090 /* ExerciseItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemMapper.swift; sourceTree = "<group>"; };
 		BC5AE1A62570443200C55EEB /* RemoteExerciseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteExerciseLoader.swift; sourceTree = "<group>"; };
 		BC5BCC36256CFD8500078236 /* Home_Active_Man.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Home_Active_Man.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5BCC3A256CFD8500078236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			children = (
 				BC5AE1A62570443200C55EEB /* RemoteExerciseLoader.swift */,
 				BC57BE8825881A78008A1090 /* HTTPClient.swift */,
+				BC57BE8C25881ADC008A1090 /* ExerciseItemMapper.swift */,
 			);
 			path = "Exercise API";
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				BC6C716B256D37EA00720AC9 /* ExerciseLoader.swift in Sources */,
 				BC5BCC53256D02DB00078236 /* ExerciseItem.swift in Sources */,
 				BC57BE8925881A78008A1090 /* HTTPClient.swift in Sources */,
+				BC57BE8D25881ADC008A1090 /* ExerciseItemMapper.swift in Sources */,
 				BC5AE1A72570443200C55EEB /* RemoteExerciseLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

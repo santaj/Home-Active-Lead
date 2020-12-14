@@ -7,15 +7,6 @@
 
 import Foundation
 
-public enum HTTPClientResult {
-    case success(Data, HTTPURLResponse)
-    case failure(Error)
-}
-
-public protocol HTTPClient {
-    func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void)
-}
-
 public final class RemoteExerciseLoader {
     private let client: HTTPClient
     private let url: URL
@@ -49,33 +40,5 @@ public final class RemoteExerciseLoader {
                 completion(.failure(.connectivity))
             }
         }
-    }
-}
-
-private class ExerciseItemMapper {
-    
-    private struct Root: Decodable {
-        let items: [Item]
-    }
-
-    private struct Item: Decodable {
-        public let id: UUID
-        public let frontImage: URL
-        public let title: String
-        public let category: String
-        
-        var item: ExerciseItem {
-            return ExerciseItem(id: id, frontImage: frontImage, title: title, category: category)
-        }
-    }
-    
-    static var OK200: Int { return 200 }
-    
-    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [ExerciseItem] {
-        guard response.statusCode == OK200 else {
-            throw RemoteExerciseLoader.Error.invalidData
-        }
-        let root = try JSONDecoder().decode(Root.self, from: data)
-        return root.items.map { $0.item }
     }
 }
