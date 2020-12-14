@@ -67,6 +67,14 @@
 			path = "Exercise Feature";
 			sourceTree = "<group>";
 		};
+		BC57BE9025882DC6008A1090 /* Exercise API  */ = {
+			isa = PBXGroup;
+			children = (
+				BC5BCC44256CFD8500078236 /* Home_Active_ManTests.swift */,
+			);
+			path = "Exercise API ";
+			sourceTree = "<group>";
+		};
 		BC5AE1A52570441100C55EEB /* Exercise API */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,7 +116,7 @@
 		BC5BCC43256CFD8500078236 /* Home Active ManTests */ = {
 			isa = PBXGroup;
 			children = (
-				BC5BCC44256CFD8500078236 /* Home_Active_ManTests.swift */,
+				BC57BE9025882DC6008A1090 /* Exercise API  */,
 				BC5BCC46256CFD8500078236 /* Info.plist */,
 			);
 			path = "Home Active ManTests";
