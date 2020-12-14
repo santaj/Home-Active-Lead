@@ -97,6 +97,20 @@ class Home_Active_ManTests: XCTestCase {
             client.complete(withStatusCode: 200, data: json)
         }
     }
+    
+    func test_load_doesNotDeliverResultAfterSUTHasBeenDealocated() {
+        let url = URL(string: "http://aNother-url.com")!
+        let client = HTTPClientSpy()
+        var sut: RemoteExerciseLoader? = RemoteExerciseLoader(url: url, client: client)
+        
+        var capturedResult = [RemoteExerciseLoader.Result]()
+        sut?.load() { capturedResult.append($0) }
+        
+        sut = nil
+        client.complete(withStatusCode: 200, data: makeItemsJSON([]))
+        
+        XCTAssertTrue(capturedResult.isEmpty)
+    }
 
     //MARK: - Helpers
     
