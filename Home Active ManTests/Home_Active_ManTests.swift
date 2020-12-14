@@ -100,11 +100,18 @@ class Home_Active_ManTests: XCTestCase {
 
     //MARK: - Helpers
     
-    private func makeSUT(url: URL = URL(string: "https://a-given-url.com")!) -> (sut: RemoteExerciseLoader, client: HTTPClientSpy) {
+    private func makeSUT(url: URL = URL(string: "https://a-given-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteExerciseLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = RemoteExerciseLoader(url: url, client: client)
-        
+        trackForMemoryLeaks(sut, file: file, line: line)
+        trackForMemoryLeaks(client, file: file, line: line)
         return (sut, client)
+    }
+    
+    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been dealocated, potentional memory leak", file: file, line: line)
+        }
     }
     
     private func makeItem(id: UUID, frontImage: URL, title: String, category: String) -> (model: ExerciseItem, json: [String: Any]) {

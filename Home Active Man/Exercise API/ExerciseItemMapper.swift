@@ -11,6 +11,10 @@ internal final class ExerciseItemMapper {
     
     private struct Root: Decodable {
         let items: [Item]
+        
+        var exercises: [ExerciseItem] {
+            return items.map { $0.item }
+        }
     }
 
     private struct Item: Decodable {
@@ -26,11 +30,11 @@ internal final class ExerciseItemMapper {
     
     private static var OK200: Int { return 200 }
     
-    internal static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [ExerciseItem] {
-        guard response.statusCode == OK200 else {
-            throw RemoteExerciseLoader.Error.invalidData
+    internal static func map(_ data: Data, from response: HTTPURLResponse) -> RemoteExerciseLoader.Result {
+        guard response.statusCode == OK200,
+              let root = try? JSONDecoder().decode(Root.self, from: data) else {
+            return .failure(.invalidData)
         }
-        let root = try JSONDecoder().decode(Root.self, from: data)
-        return root.items.map { $0.item }
+        return .success(root.exercises)
     }
 }
