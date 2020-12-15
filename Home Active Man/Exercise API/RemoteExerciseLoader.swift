@@ -16,10 +16,7 @@ public final class RemoteExerciseLoader {
         case invalidData
     }
     
-    public enum Result: Equatable {
-        case success([ExerciseItem])
-        case failure(Error)
-    }
+    public typealias Result = LoadExerciseResult<Error>
     
     public init(url: URL, client: HTTPClient) {
         self.client = client

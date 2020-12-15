@@ -7,12 +7,14 @@
 
 import Foundation
 
-enum LoadExerciseResult {
+public enum LoadExerciseResult<Error: Swift.Error> {
     case success([ExerciseItem])
-    case error(Error)
+    case failure(Error)
 }
 
+extension LoadExerciseResult: Equatable where Error: Equatable {}
+
 protocol ExerciseLoader {
-    func load(completion: @escaping (LoadExerciseResult) -> Void)
+    func load(completion: @escaping (LoadExerciseResult<Error>) -> Void)
 }
 
