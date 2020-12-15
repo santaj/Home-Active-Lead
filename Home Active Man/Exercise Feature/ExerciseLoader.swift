@@ -12,7 +12,7 @@ public enum LoadExerciseResult {
     case failure(Error)
 }
 
-protocol ExerciseLoader {
+public protocol ExerciseLoader {
     func load(completion: @escaping (LoadExerciseResult) -> Void)
 }
 
