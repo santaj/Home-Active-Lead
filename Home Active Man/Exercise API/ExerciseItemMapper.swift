@@ -33,7 +33,7 @@ internal final class ExerciseItemMapper {
     internal static func map(_ data: Data, from response: HTTPURLResponse) -> RemoteExerciseLoader.Result {
         guard response.statusCode == OK200,
               let root = try? JSONDecoder().decode(Root.self, from: data) else {
-            return .failure(.invalidData)
+            return .failure(RemoteExerciseLoader.Error.invalidData)
         }
         return .success(root.exercises)
     }

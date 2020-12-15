@@ -16,7 +16,7 @@ public final class RemoteExerciseLoader: ExerciseLoader {
         case invalidData
     }
     
-    public typealias Result = LoadExerciseResult<Error>
+    public typealias Result = LoadExerciseResult
     
     public init(url: URL, client: HTTPClient) {
         self.client = client
@@ -31,7 +31,7 @@ public final class RemoteExerciseLoader: ExerciseLoader {
             case let .success(data, response):
                 completion(ExerciseItemMapper.map(data, from: response))
             case .failure:
-                completion(.failure(.connectivity))
+                completion(.failure(Error.connectivity))
             }
         }
     }
