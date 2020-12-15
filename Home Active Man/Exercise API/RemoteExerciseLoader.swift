@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class RemoteExerciseLoader {
+public final class RemoteExerciseLoader: ExerciseLoader {
     private let client: HTTPClient
     private let url: URL
     

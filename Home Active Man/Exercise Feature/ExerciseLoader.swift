@@ -15,6 +15,8 @@ public enum LoadExerciseResult<Error: Swift.Error> {
 extension LoadExerciseResult: Equatable where Error: Equatable {}
 
 protocol ExerciseLoader {
+    associatedtype Error: Swift.Error
+    
     func load(completion: @escaping (LoadExerciseResult<Error>) -> Void)
 }
 
