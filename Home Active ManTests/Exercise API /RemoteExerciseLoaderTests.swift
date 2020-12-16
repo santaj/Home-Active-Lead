@@ -9,7 +9,7 @@ import XCTest
 import Home_Active_Man
 
 
-class Home_Active_ManTests: XCTestCase {
+class RemoteExerciseLoaderTests: XCTestCase {
 
     func test_init_doesNotRequestDataFromURL() {
         let (_, client) = makeSUT()
