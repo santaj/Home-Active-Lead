@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC4BADA3258BD29400CF9FEC /* XCTestCase+MemoryLeakTrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4BADA2258BD29400CF9FEC /* XCTestCase+MemoryLeakTrackingHelper.swift */; };
+		BC4BADA9258C0CB500CF9FEC /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4BADA8258C0CB500CF9FEC /* URLSessionHTTPClient.swift */; };
 		BC4E4653258A2BE60051D55E /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E4652258A2BE60051D55E /* URLSessionHTTPClientTests.swift */; };
 		BC57BE8925881A78008A1090 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57BE8825881A78008A1090 /* HTTPClient.swift */; };
 		BC57BE8D25881ADC008A1090 /* ExerciseItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57BE8C25881ADC008A1090 /* ExerciseItemMapper.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		BC4BADA2258BD29400CF9FEC /* XCTestCase+MemoryLeakTrackingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTrackingHelper.swift"; sourceTree = "<group>"; };
+		BC4BADA8258C0CB500CF9FEC /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		BC4E4652258A2BE60051D55E /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		BC57BE8825881A78008A1090 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		BC57BE8C25881ADC008A1090 /* ExerciseItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemMapper.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				BC5AE1A62570443200C55EEB /* RemoteExerciseLoader.swift */,
 				BC57BE8825881A78008A1090 /* HTTPClient.swift */,
 				BC57BE8C25881ADC008A1090 /* ExerciseItemMapper.swift */,
+				BC4BADA8258C0CB500CF9FEC /* URLSessionHTTPClient.swift */,
 			);
 			path = "Exercise API";
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				BC57BE8925881A78008A1090 /* HTTPClient.swift in Sources */,
 				BC57BE8D25881ADC008A1090 /* ExerciseItemMapper.swift in Sources */,
 				BC5AE1A72570443200C55EEB /* RemoteExerciseLoader.swift in Sources */,
+				BC4BADA9258C0CB500CF9FEC /* URLSessionHTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
