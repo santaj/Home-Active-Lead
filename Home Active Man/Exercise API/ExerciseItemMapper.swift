@@ -18,13 +18,13 @@ internal final class ExerciseItemMapper {
     }
 
     private struct Item: Decodable {
-        public let id: UUID
-        public let frontImage: URL
-        public let title: String
-        public let category: String
+        let id: UUID
+        let description: String?
+        let location: String?
+        let image: URL
         
         var item: ExerciseItem {
-            return ExerciseItem(id: id, frontImage: frontImage, title: title, category: category)
+            return ExerciseItem(id: id, description: description, location: location, image: image)
         }
     }
     

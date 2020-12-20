@@ -80,15 +80,15 @@ class RemoteExerciseLoaderTests: XCTestCase {
         
         let item1 = makeItem(
             id: UUID(),
-            frontImage: URL(string: "http://a-url.com")!,
-            title: "Ben",
-            category: "Legs")
+            description: nil,
+            location: nil,
+            imageURL: URL(string: "http://a-url.com")!)
         
         let item2 = makeItem(
             id: UUID(),
-            frontImage: URL(string: "http://aNother-url.com")!,
-            title: "Bröst",
-            category: "Överkropp")
+            description: "a description",
+            location: "a location",
+            imageURL: URL(string: "http://a-url.com")!)
         
         let items = [item1.model, item2.model]
         
@@ -126,16 +126,18 @@ class RemoteExerciseLoaderTests: XCTestCase {
         return .failure(error)
     }
     
-    private func makeItem(id: UUID, frontImage: URL, title: String, category: String) -> (model: ExerciseItem, json: [String: Any]) {
+    private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: ExerciseItem, json: [String: Any]) {
         
-        let item = ExerciseItem(id: id, frontImage: frontImage, title: title, category: category)
+        let item = ExerciseItem(id: id, description: description, location: location, image: imageURL)
         
         let json = [
             "id": id.uuidString,
-            "frontImage": frontImage.absoluteString,
-            "title": title,
-            "category": category
-        ]
+            "description": description,
+            "location": location,
+            "image": imageURL.absoluteString
+        ].reduce(into: [String: Any]()) { (acc, e) in
+            if let value = e.value { acc[e.key] = value }
+        }
         return (item, json)
     }
     

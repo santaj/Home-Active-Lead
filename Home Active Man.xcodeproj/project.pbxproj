@@ -10,6 +10,8 @@
 		BC4BADA3258BD29400CF9FEC /* XCTestCase+MemoryLeakTrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4BADA2258BD29400CF9FEC /* XCTestCase+MemoryLeakTrackingHelper.swift */; };
 		BC4BADA9258C0CB500CF9FEC /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4BADA8258C0CB500CF9FEC /* URLSessionHTTPClient.swift */; };
 		BC4E4653258A2BE60051D55E /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E4652258A2BE60051D55E /* URLSessionHTTPClientTests.swift */; };
+		BC5582F6258D832C00181E93 /* Home_Active_ManAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5582F5258D832C00181E93 /* Home_Active_ManAPIEndToEndTests.swift */; };
+		BC5582F8258D832C00181E93 /* Home_Active_Man.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5BCC36256CFD8500078236 /* Home_Active_Man.framework */; };
 		BC57BE8925881A78008A1090 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57BE8825881A78008A1090 /* HTTPClient.swift */; };
 		BC57BE8D25881ADC008A1090 /* ExerciseItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57BE8C25881ADC008A1090 /* ExerciseItemMapper.swift */; };
 		BC5AE1A72570443200C55EEB /* RemoteExerciseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5AE1A62570443200C55EEB /* RemoteExerciseLoader.swift */; };
@@ -20,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BC5582F9258D832C00181E93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC5BCC2D256CFD8500078236 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC5BCC35256CFD8500078236;
+			remoteInfo = "Home Active Man";
+		};
 		BC5BCC41256CFD8500078236 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC5BCC2D256CFD8500078236 /* Project object */;
@@ -33,6 +42,9 @@
 		BC4BADA2258BD29400CF9FEC /* XCTestCase+MemoryLeakTrackingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTrackingHelper.swift"; sourceTree = "<group>"; };
 		BC4BADA8258C0CB500CF9FEC /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		BC4E4652258A2BE60051D55E /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
+		BC5582F3258D832C00181E93 /* Home_Active_ManAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Home_Active_ManAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC5582F5258D832C00181E93 /* Home_Active_ManAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Active_ManAPIEndToEndTests.swift; sourceTree = "<group>"; };
+		BC5582F7258D832C00181E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC57BE8825881A78008A1090 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		BC57BE8C25881ADC008A1090 /* ExerciseItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemMapper.swift; sourceTree = "<group>"; };
 		BC5AE1A62570443200C55EEB /* RemoteExerciseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteExerciseLoader.swift; sourceTree = "<group>"; };
@@ -46,6 +58,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BC5582F0258D832C00181E93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC5582F8258D832C00181E93 /* Home_Active_Man.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC5BCC33256CFD8500078236 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -81,6 +101,15 @@
 			path = "Exercise Feature";
 			sourceTree = "<group>";
 		};
+		BC5582F4258D832C00181E93 /* Home_Active_ManAPIEndToEndTests */ = {
+			isa = PBXGroup;
+			children = (
+				BC5582F5258D832C00181E93 /* Home_Active_ManAPIEndToEndTests.swift */,
+				BC5582F7258D832C00181E93 /* Info.plist */,
+			);
+			path = Home_Active_ManAPIEndToEndTests;
+			sourceTree = "<group>";
+		};
 		BC57BE9025882DC6008A1090 /* Exercise API  */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +136,7 @@
 			children = (
 				BC5BCC38256CFD8500078236 /* Home Active Man */,
 				BC5BCC43256CFD8500078236 /* Home Active ManTests */,
+				BC5582F4258D832C00181E93 /* Home_Active_ManAPIEndToEndTests */,
 				BC5BCC37256CFD8500078236 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,6 +146,7 @@
 			children = (
 				BC5BCC36256CFD8500078236 /* Home_Active_Man.framework */,
 				BC5BCC3F256CFD8500078236 /* Home Active ManTests.xctest */,
+				BC5582F3258D832C00181E93 /* Home_Active_ManAPIEndToEndTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,6 +183,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		BC5582F2258D832C00181E93 /* Home_Active_ManAPIEndToEndTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC5582FD258D832C00181E93 /* Build configuration list for PBXNativeTarget "Home_Active_ManAPIEndToEndTests" */;
+			buildPhases = (
+				BC5582EF258D832C00181E93 /* Sources */,
+				BC5582F0258D832C00181E93 /* Frameworks */,
+				BC5582F1258D832C00181E93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC5582FA258D832C00181E93 /* PBXTargetDependency */,
+			);
+			name = Home_Active_ManAPIEndToEndTests;
+			productName = Home_Active_ManAPIEndToEndTests;
+			productReference = BC5582F3258D832C00181E93 /* Home_Active_ManAPIEndToEndTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BC5BCC35256CFD8500078236 /* Home Active Man */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC5BCC4A256CFD8500078236 /* Build configuration list for PBXNativeTarget "Home Active Man" */;
@@ -194,9 +243,12 @@
 		BC5BCC2D256CFD8500078236 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					BC5582F2258D832C00181E93 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					BC5BCC35256CFD8500078236 = {
 						CreatedOnToolsVersion = 12.2;
 						LastSwiftMigration = 1220;
@@ -221,11 +273,19 @@
 			targets = (
 				BC5BCC35256CFD8500078236 /* Home Active Man */,
 				BC5BCC3E256CFD8500078236 /* Home Active ManTests */,
+				BC5582F2258D832C00181E93 /* Home_Active_ManAPIEndToEndTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BC5582F1258D832C00181E93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC5BCC34256CFD8500078236 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -243,6 +303,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BC5582EF258D832C00181E93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC5582F6258D832C00181E93 /* Home_Active_ManAPIEndToEndTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC5BCC32256CFD8500078236 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +337,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BC5582FA258D832C00181E93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC5BCC35256CFD8500078236 /* Home Active Man */;
+			targetProxy = BC5582F9258D832C00181E93 /* PBXContainerItemProxy */;
+		};
 		BC5BCC42256CFD8500078236 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BC5BCC35256CFD8500078236 /* Home Active Man */;
@@ -277,6 +350,42 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		BC5582FB258D832C00181E93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9DVLTW4HGK;
+				INFOPLIST_FILE = Home_Active_ManAPIEndToEndTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JosefSantamaria.Home-Active-ManAPIEndToEndTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BC5582FC258D832C00181E93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9DVLTW4HGK;
+				INFOPLIST_FILE = Home_Active_ManAPIEndToEndTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JosefSantamaria.Home-Active-ManAPIEndToEndTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		BC5BCC48256CFD8500078236 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -490,6 +599,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BC5582FD258D832C00181E93 /* Build configuration list for PBXNativeTarget "Home_Active_ManAPIEndToEndTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC5582FB258D832C00181E93 /* Debug */,
+				BC5582FC258D832C00181E93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BC5BCC30256CFD8500078236 /* Build configuration list for PBXProject "Home Active Man" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

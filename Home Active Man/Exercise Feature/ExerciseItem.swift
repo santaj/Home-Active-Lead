@@ -9,15 +9,15 @@ import Foundation
 
 
 public struct ExerciseItem: Equatable {
-    public let id: UUID
-    public let frontImage: URL
-    public let title: String
-    public let category: String
-    
-    public init(id: UUID, frontImage: URL, title: String, category: String) {
+    private let id: UUID
+    private let description: String?
+    private let location: String?
+    private let image: URL
+  
+    public init(id: UUID, description: String?, location: String?, image: URL) {
         self.id = id
-        self.frontImage = frontImage
-        self.title = title
-        self.category = category
+        self.description = description
+        self.location = location
+        self.image = image
     }
 }
