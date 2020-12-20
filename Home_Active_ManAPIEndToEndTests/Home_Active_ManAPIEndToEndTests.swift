@@ -40,7 +40,7 @@ class Home_Active_ManAPIEndToEndTests: XCTestCase {
         case let .failure(error):
             XCTFail("Expected successful result got \(error) instead")
         default:
-            XCTFail("Expected successful result got nothing instead")
+            XCTFail("Expected successful result got nothing insteadkk")
         }
     }
     
