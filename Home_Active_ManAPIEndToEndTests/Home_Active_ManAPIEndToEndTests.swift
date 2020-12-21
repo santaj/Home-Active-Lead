@@ -11,6 +11,29 @@ import Home_Active_Man
 class Home_Active_ManAPIEndToEndTests: XCTestCase {
 
     func test_endToEndTestServerGetExerciseResult_matchesFixedTestAccountData() {
+        switch getFeedResult() {
+        case let .success(items)?:
+            XCTAssertEqual(items.count, 8, "Expected 8 items in the test account feed")
+            
+            XCTAssertEqual(items[0], expectedItem(at: 0))
+            XCTAssertEqual(items[1], expectedItem(at: 1))
+            XCTAssertEqual(items[2], expectedItem(at: 2))
+            XCTAssertEqual(items[3], expectedItem(at: 3))
+            XCTAssertEqual(items[4], expectedItem(at: 4))
+            XCTAssertEqual(items[5], expectedItem(at: 5))
+            XCTAssertEqual(items[6], expectedItem(at: 6))
+            XCTAssertEqual(items[7], expectedItem(at: 7))
+            
+        case let .failure(error)?:
+            XCTFail("Expected successful result got \(error) instead")
+        default:
+            XCTFail("Expected successful result got nothing instead")
+        }
+    }
+    
+    //MARK: - Helpers
+    
+    private func getFeedResult() -> LoadExerciseResult? {
         let testServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
         let client = URLSessionHTTPClient()
         let loader = RemoteExerciseLoader(url: testServerURL, client: client)
@@ -23,28 +46,8 @@ class Home_Active_ManAPIEndToEndTests: XCTestCase {
             exp.fulfill()
         }
         wait(for: [exp], timeout: 5.0)
-        
-        switch receivedResult {
-        case let .success(items):
-            XCTAssertEqual(items.count, 8, "Expected 8 items in the test account feed")
-            
-            XCTAssertEqual(items[0], expectedItem(at: 0))
-            XCTAssertEqual(items[1], expectedItem(at: 1))
-            XCTAssertEqual(items[2], expectedItem(at: 2))
-            XCTAssertEqual(items[3], expectedItem(at: 3))
-            XCTAssertEqual(items[4], expectedItem(at: 4))
-            XCTAssertEqual(items[5], expectedItem(at: 5))
-            XCTAssertEqual(items[6], expectedItem(at: 6))
-            XCTAssertEqual(items[7], expectedItem(at: 7))
-            
-        case let .failure(error):
-            XCTFail("Expected successful result got \(error) instead")
-        default:
-            XCTFail("Expected successful result got nothing instead")
-        }
+        return receivedResult
     }
-    
-    //MARK: - Helpers
     
     private func expectedItem(at index: Int) -> ExerciseItem {
         return ExerciseItem(
