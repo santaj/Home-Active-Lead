@@ -47,7 +47,7 @@ class Home_Active_ManAPIEndToEndTests: XCTestCase {
             receivedResult = result
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 5.0)
+        wait(for: [exp], timeout: 4.0)
         return receivedResult
     }
     
